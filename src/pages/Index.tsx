@@ -6,19 +6,24 @@ import SchedulingSection from "@/components/landing/SchedulingSection";
 import DashboardSection from "@/components/landing/DashboardSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
+import DemoRequestDialog from "@/components/landing/DemoRequestDialog";
+import { DemoRequestProvider } from "@/contexts/DemoRequestContext";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      <HeroSection />
-      <FeaturesSection />
-      <SecuritySection />
-      <SchedulingSection />
-      <DashboardSection />
-      <CTASection />
-      <Footer />
-    </div>
+    <DemoRequestProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <HeroSection />
+        <FeaturesSection />
+        <SecuritySection />
+        <SchedulingSection />
+        <DashboardSection />
+        <CTASection />
+        <Footer />
+      </div>
+      <DemoRequestDialog />
+    </DemoRequestProvider>
   );
 };
 

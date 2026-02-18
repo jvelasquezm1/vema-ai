@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Eye, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { useDemoRequest } from "@/contexts/DemoRequestContext";
 
 const Navbar = () => {
+  const { openDemo } = useDemoRequest();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleOpenDemo = () => {
+    setMobileOpen(false);
+    openDemo();
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -25,11 +32,13 @@ const Navbar = () => {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Eye className="w-4 h-4 text-primary-foreground" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="VEMA AI"
+              className="w-8 h-8 object-contain"
+            />
             <span className="font-display font-bold text-foreground text-lg">
-              VEMA IA
+              VEMA AI
             </span>
           </div>
 
@@ -55,7 +64,7 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:block">
-            <Button variant="hero" size="sm">
+            <Button variant="hero" size="sm" onClick={handleOpenDemo}>
               Reservar demo
             </Button>
           </div>
@@ -102,7 +111,12 @@ const Navbar = () => {
                 Reportes
               </a>
             </nav>
-            <Button variant="hero" size="sm" className="w-full">
+            <Button
+              variant="hero"
+              size="sm"
+              className="w-full"
+              onClick={handleOpenDemo}
+            >
               Reservar demo
             </Button>
           </motion.div>

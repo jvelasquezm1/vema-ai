@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useDemoRequest } from "@/contexts/DemoRequestContext";
 
 const CTASection = () => {
+  const { openDemo } = useDemoRequest();
   return (
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
       {/* Background decoration */}
@@ -21,12 +23,17 @@ const CTASection = () => {
             <span className="text-gradient">siguiente nivel</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            Descubre cómo VEMA IA puede transformar la gestión de tu clínica
+            Descubre cómo VEMA AI puede transformar la gestión de tu clínica
             oftalmológica. Sin compromiso, sin presión.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button variant="hero" size="lg" className="text-base px-8 py-6">
+            <Button
+              variant="hero"
+              size="lg"
+              className="text-base px-8 py-6"
+              onClick={openDemo}
+            >
               Reservar una demo
               <ArrowRight className="w-5 h-5 ml-1" />
             </Button>

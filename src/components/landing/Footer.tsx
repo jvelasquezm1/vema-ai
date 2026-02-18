@@ -10,7 +10,7 @@ const Footer = () => {
               <Eye className="w-4 h-4 text-primary-foreground" />
             </div>
             <span className="font-display font-bold text-foreground">
-              VEMA IA
+              VEMA AI
             </span>
           </div>
 
@@ -36,7 +36,7 @@ const Footer = () => {
           </nav>
 
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} VEMA IA. Todos los derechos reservados.
+            © {new Date().getFullYear()} VEMA AI. Todos los derechos reservados.
           </p>
         </div>
       </div>

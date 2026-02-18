@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
+import { useDemoRequest } from "@/contexts/DemoRequestContext";
 
 const HeroSection = () => {
+  const { openDemo } = useDemoRequest();
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background */}
@@ -29,14 +31,19 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg">
-              VEMA IA es el sistema de agentes inteligentes diseñado
+              VEMA AI es el sistema de agentes inteligentes diseñado
               exclusivamente para clínicas oftalmológicas privadas en España.
               Automatiza procesos, protege datos y mejora la experiencia de tus
               pacientes.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-4">
-              <Button variant="hero" size="lg" className="text-base px-8 py-6">
+              <Button
+                variant="hero"
+                size="lg"
+                className="text-base px-8 py-6"
+                onClick={openDemo}
+              >
                 Solicitar demo gratuita
                 <ArrowRight className="w-5 h-5 ml-1" />
               </Button>
@@ -65,7 +72,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden glow-cyan animate-float">
               <img
                 src={heroDashboard}
-                alt="Panel de VEMA IA mostrando analíticas oftalmológicas"
+                alt="Panel de VEMA AI mostrando analíticas oftalmológicas"
                 className="w-full h-auto rounded-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl" />
