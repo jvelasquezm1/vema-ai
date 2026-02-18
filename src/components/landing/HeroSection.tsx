@@ -1,11 +1,24 @@
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
 import { useDemoRequest } from "@/contexts/DemoRequestContext";
+import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
 
 const HeroSection = () => {
   const { openDemo } = useDemoRequest();
+  const [videoOpen, setVideoOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!videoOpen && videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [videoOpen]);
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Background */}
@@ -51,6 +64,7 @@ const HeroSection = () => {
                 variant="hero-outline"
                 size="lg"
                 className="text-base px-8 py-6"
+                onClick={() => setVideoOpen(true)}
               >
                 <Play className="w-4 h-4 mr-1" />
                 Ver cómo funciona
@@ -61,6 +75,22 @@ const HeroSection = () => {
               Sin compromiso · Configuración asistida · Cumplimiento RGPD
             </p>
           </motion.div>
+
+          {/* Video modal */}
+          <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+            <DialogContent className="max-w-4xl w-[95vw] p-0 overflow-hidden bg-black border-0 [&>button]:text-white [&>button]:hover:bg-white/20 [&>button]:right-2 [&>button]:top-2">
+              <video
+                ref={videoRef}
+                src="/VEMA.mp4"
+                controls
+                autoPlay
+                playsInline
+                className="w-full aspect-video"
+              >
+                Tu navegador no soporta la reproducción de video.
+              </video>
+            </DialogContent>
+          </Dialog>
 
           {/* Right: Hero Image */}
           <motion.div

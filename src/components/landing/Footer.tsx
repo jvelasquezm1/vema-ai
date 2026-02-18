@@ -6,10 +6,12 @@ const Footer = () => {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <Eye className="w-4 h-4 text-primary-foreground" />
-            </div>
-            <span className="font-display font-bold text-foreground">
+            <img
+              src="/logo.png"
+              alt="VEMA AI"
+              className="w-8 h-8 object-contain"
+            />
+            <span className="font-display font-bold text-foreground text-lg">
               VEMA AI
             </span>
           </div>
